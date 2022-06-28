@@ -1,0 +1,34 @@
+.main {
+    display: flex;
+    background: #fff;
+    padding: 20px;
+    min-height: 700px;
+    & > div {
+        flex: 1;
+    }
+    .title {
+        background: #fafafa;
+        padding: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        button {
+            margin-left: 10px;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+    }
+    .menuList {
+        padding-right: 20px;
+    }
+    .classList {
+        border-left: 1px dashed #c3c3c3;
+        padding-left: 20px;
+        .lisetMain {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+    }
+}
