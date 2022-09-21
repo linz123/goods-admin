@@ -44,8 +44,7 @@ export async function goodsList(body: any, options?: { [key: string]: any }) {
     ...(options || {}),
   }).then((res) => {
     const { data } = res;
-    compileGoodsData(data, classes, labels, prices);
-    console.log(data);
+    compileGoodsData(data.list, classes, labels, prices);
     return {
       data: data.list,
       success: true, // success 请返回 true，不然 table 会停止解析数据，即使有数据
@@ -379,22 +378,26 @@ export async function getOrderById(body: any, options?: { [key: string]: any }) 
 }
 
 export async function getOrderListByPage(body: any, options?: { [key: string]: any }) {
+  const { pageSize, current } = body;
   return request('/admin/getOrderListByPage', {
     method: 'POST',
     data: {
-      ...body,
-      pageNumber: body.current,
+      pageSize,
+      pageNumber: current,
     },
     ...(options || {}),
   }).then((res) => {
     if (res.code === 200) {
-      res.data.forEach((item: any, index: number) => {
+      res.data.List.forEach((item: any, index: number) => {
         item.key = index;
-        // item.orderId = item.orders[0].bill.orderId
-        // item.createTime = item.orders[0].bill.createTime
       });
     }
-    return res;
+    const { data } = res;
+    return {
+      data: data.List,
+      success: true, // success 请返回 true，不然 table 会停止解析数据，即使有数据
+      total: data.total, // 不传会使用 data 的长度，如果是分页一定要传
+    };
   });
 }
 
