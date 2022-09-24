@@ -29,6 +29,8 @@ declare namespace API {
         title: string;
         classId: string;
         describe: string;
+        remark: string;
+        welfare:string;
         goodId: number | null;
         goodsName: string;
         imgId: string;
@@ -37,7 +39,6 @@ declare namespace API {
         serialNumber: string;
         thumbId: string;
         tipId: any;
-        title: string;
         createTime: string;
         updateTime: string;
         classShowArr?: Array;

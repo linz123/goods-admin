@@ -10,7 +10,7 @@ const { TextArea } = Input;
 
 const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo, onClose }) => {
   console.log(currentInfo);
-  const { goodId, title, goodsName, price, tipId, classId, labelId, thumbId, imgId, describe } =
+  const { goodId, title, goodsName, price, tipId, classId, labelId, thumbId, imgId, describe, remark , welfare } =
     currentInfo;
 
   const intl = useIntl();
@@ -78,6 +78,8 @@ const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo
           goodsName,
           price,
           describe,
+          remark,
+          welfare
         }}
       >
         <Form.Item
@@ -188,7 +190,19 @@ const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo
           name="describe"
           label={intl.formatMessage({ id: 'pages.goodlist.describe', defaultMessage: 'describe' })}
         >
-          <TextArea rows={3} />
+          <TextArea rows={3} placeholder="如需分条逗号隔开"  />
+        </Form.Item>
+        <Form.Item
+          name="remark"
+          label={intl.formatMessage({ id: 'pages.goodlist.remark', defaultMessage: 'remark' })}
+        >
+          <TextArea rows={3}  placeholder="如需分条逗号隔开" />
+        </Form.Item>
+        <Form.Item
+          name="welfare"
+          label={intl.formatMessage({ id: 'pages.goodlist.welfare', defaultMessage: 'welfare' })}
+        >
+          <TextArea rows={3} placeholder="如需分条逗号隔开" />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
