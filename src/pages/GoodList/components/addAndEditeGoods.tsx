@@ -10,7 +10,7 @@ const { TextArea } = Input;
 
 const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo, onClose }) => {
   console.log(currentInfo);
-  const { goodId, title, goodsName, price, tipId, classId, labelId, thumbId, imgId, describe, remark , welfare, pay, weight } =
+  const { goodId, title, goodsName, price, tipId, classId, labelId, thumbId, imgId, describe, remark , welfare, pay, weight,link } =
     currentInfo;
 
   const intl = useIntl();
@@ -81,7 +81,8 @@ const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo
           remark,
           welfare,
           pay,
-          weight
+          weight,
+          link
         }}
       >
         <Form.Item
@@ -131,6 +132,12 @@ const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo
           ]}
         >
           <InputNumber style={{ width: '100%' }} />
+        </Form.Item>
+        <Form.Item
+          name="link"
+          label={intl.formatMessage({ id: 'pages.goodlist.link', defaultMessage: 'link' })}
+        >
+          <Input />
         </Form.Item>
         <Form.Item
           name="weight"

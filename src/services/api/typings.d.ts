@@ -31,6 +31,7 @@ declare namespace API {
         describe: string;
         remark: string;
         welfare:string;
+        link:string;
         goodId: number | null;
         goodsName: string;
         imgId: string;

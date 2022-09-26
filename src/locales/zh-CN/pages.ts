@@ -75,6 +75,7 @@ export default {
     'pages.goodlist.imgId': '大图',
     'pages.goodlist.class': '分类',
     'pages.goodlist.label': '标签',
+    'pages.goodlist.link': '联系方式',
     'pages.goodlist.tips': '小费',
     'pages.goodlist.operation': '操作',
     'pages.goodlist.eidt': '编辑',
