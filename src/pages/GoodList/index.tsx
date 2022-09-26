@@ -52,6 +52,8 @@ export default function GoodList() {
         { title: <FormattedMessage id="pages.goodlist.remark" defaultMessage="remark" />, dataIndex: 'remark', search: false, width: '10%', ellipsis: true },
         { title: <FormattedMessage id="pages.goodlist.welfare" defaultMessage="welfare" />, dataIndex: 'welfare', search: false, width: '10%', ellipsis: true },
         { title: <FormattedMessage id="pages.goodlist.price" defaultMessage="price" />, dataIndex: 'price' },
+        { title: <FormattedMessage id="pages.goodlist.pay" defaultMessage="pay" />, dataIndex: 'pay', search: false, width: '10%', ellipsis: true },
+        { title: <FormattedMessage id="pages.goodlist.weight" defaultMessage="weight" />, dataIndex: 'weight' },
         {
             title: <FormattedMessage id="pages.goodlist.class" defaultMessage="class" />, dataIndex: 'classShowArr', ellipsis: true, search: false, render: (_, record) => (
                 <Space>

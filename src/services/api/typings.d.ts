@@ -36,6 +36,8 @@ declare namespace API {
         imgId: string;
         labelId: string;
         price: number | null;
+        pay: string;
+        weight:number |null;
         serialNumber: string;
         thumbId: string;
         tipId: any;

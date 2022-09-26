@@ -10,7 +10,7 @@ const { TextArea } = Input;
 
 const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo, onClose }) => {
   console.log(currentInfo);
-  const { goodId, title, goodsName, price, tipId, classId, labelId, thumbId, imgId, describe, remark , welfare } =
+  const { goodId, title, goodsName, price, tipId, classId, labelId, thumbId, imgId, describe, remark , welfare, pay, weight } =
     currentInfo;
 
   const intl = useIntl();
@@ -79,7 +79,9 @@ const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo
           price,
           describe,
           remark,
-          welfare
+          welfare,
+          pay,
+          weight
         }}
       >
         <Form.Item
@@ -127,6 +129,12 @@ const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo
               }),
             },
           ]}
+        >
+          <InputNumber style={{ width: '100%' }} />
+        </Form.Item>
+        <Form.Item
+          name="weight"
+          label={intl.formatMessage({ id: 'pages.goodlist.weight', defaultMessage: 'weight' })}
         >
           <InputNumber style={{ width: '100%' }} />
         </Form.Item>
@@ -185,6 +193,12 @@ const AddAndEditeGoods: React.FC<API.addAndEditFormProps> = ({ type, currentInfo
             defaultPropsVal={imgId}
             onChange={(type: string, val: string) => onUploadChange(type, val)}
           />
+        </Form.Item>
+        <Form.Item
+          name="pay"
+          label={intl.formatMessage({ id: 'pages.goodlist.pay', defaultMessage: 'pay' })}
+        >
+          <TextArea rows={1}   />
         </Form.Item>
         <Form.Item
           name="describe"

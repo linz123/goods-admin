@@ -85,6 +85,8 @@ export default {
     'pages.goodlist.inputTips': '请输入小费！',
     'pages.goodlist.remark': '备注',
     'pages.goodlist.welfare': '福利',
+    'pages.goodlist.pay': '薪资范围',
+    'pages.goodlist.weight': '权重',
     'pages.classlist.add': '新增分类',
     'pages.classlist.classId': '分类ID',
     'pages.classlist.className': '分类名称',
