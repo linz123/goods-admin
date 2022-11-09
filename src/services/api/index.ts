@@ -1,7 +1,8 @@
 // @ts-ignore
 /* eslint-disable */
-import { request } from 'umi';
-import { compileGoodsData } from '@/util';
+import {request} from 'umi';
+import {compileGoodsData} from '@/util';
+
 /**
  * 登录  /admin/login
  * 退出  /admin/loginOut
@@ -20,6 +21,7 @@ export async function login(body: any, options?: { [key: string]: any }) {
 let classes: any[] = [],
   labels: any[] = [],
   prices: any[] = [];
+
 /**
  * 商品列表
  * 获取  /admin/goodList
@@ -30,7 +32,7 @@ let classes: any[] = [],
 export async function goodsList(body: any, options?: { [key: string]: any }) {
   if (!classes.length) {
     const res = await Promise.all([getAllClasses(), getAllLabels(), getAllTips()]);
-    const [{ data: classesData }, { data: labelsData }, { data: pricesData }] = res;
+    const [{data: classesData}, {data: labelsData}, {data: pricesData}] = res;
     classes = classesData;
     labels = labelsData;
     prices = pricesData;
@@ -43,7 +45,7 @@ export async function goodsList(body: any, options?: { [key: string]: any }) {
     },
     ...(options || {}),
   }).then((res) => {
-    const { data } = res;
+    const {data} = res;
     compileGoodsData(data.list, classes, labels, prices);
     return {
       data: data.list,
@@ -113,7 +115,7 @@ export async function deleteImgById(body: any, options?: { [key: string]: any })
  * 新增  /admin/addClass
  */
 export async function classList(body: any, options?: { [key: string]: any }) {
-  const { pageSize, current } = body;
+  const {pageSize, current} = body;
   return request<API.TableResult>('/admin/getClassesByPage', {
     method: 'POST',
     data: {
@@ -122,7 +124,7 @@ export async function classList(body: any, options?: { [key: string]: any }) {
     },
     ...(options || {}),
   }).then((res) => {
-    const { data } = res;
+    const {data} = res;
     return {
       data: data.pages,
       success: true, // success 请返回 true，不然 table 会停止解析数据，即使有数据
@@ -163,7 +165,7 @@ export async function addClass(body: any, options?: { [key: string]: any }) {
  * 新增  /admin/addLabel
  */
 export async function labelList(body: any, options?: { [key: string]: any }) {
-  const { pageSize, current } = body;
+  const {pageSize, current} = body;
   return request<API.TableResult>('/admin/getLabelsByPage', {
     method: 'POST',
     data: {
@@ -172,7 +174,7 @@ export async function labelList(body: any, options?: { [key: string]: any }) {
     },
     ...(options || {}),
   }).then((res) => {
-    const { data } = res;
+    const {data} = res;
     return {
       data: data.pages,
       success: true, // success 请返回 true，不然 table 会停止解析数据，即使有数据
@@ -378,7 +380,7 @@ export async function getOrderById(body: any, options?: { [key: string]: any }) 
 }
 
 export async function getOrderListByPage(body: any, options?: { [key: string]: any }) {
-  const { pageSize, current } = body;
+  const {pageSize, current} = body;
   return request('/admin/getOrderListByPage', {
     method: 'POST',
     data: {
@@ -392,7 +394,7 @@ export async function getOrderListByPage(body: any, options?: { [key: string]: a
         item.key = index;
       });
     }
-    const { data } = res;
+    const {data} = res;
     return {
       data: data.List,
       success: true, // success 请返回 true，不然 table 会停止解析数据，即使有数据
@@ -411,6 +413,31 @@ export async function updateOrder(body: any, options?: { [key: string]: any }) {
 
 export async function getOrderByStatus(body: any, options?: { [key: string]: any }) {
   return request('/admin/getOrderByStatus', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
+}
+
+
+export async function getStatics(body: any, options?: { [key: string]: any }) {
+  return request('/admin/getStatics', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
+}
+
+export async function get15DaysStatics(body: any, options?: { [key: string]: any }) {
+  return request('/admin/get15DaysStatics', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
+}
+
+export async function getLogByPage(body: any, options?: { [key: string]: any }) {
+  return request('/admin/getLogByPage', {
     method: 'POST',
     data: body,
     ...(options || {}),
